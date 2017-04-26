@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ZCURLEncode.h"
 
 @interface ViewController ()
 
@@ -28,11 +29,15 @@
 //    str = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,(CFStringRef)str,NULL,CFSTR(":/?#[]@!$&'()*+,;=."),kCFStringEncodingUTF8));
 //    NSURL *url = [NSURL URLWithString:str];
 //    NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@":"];
-    NSMutableCharacterSet *muSet = [NSMutableCharacterSet characterSetWithCharactersInString:@"# |\"`%^{}\\<>"];
-    [muSet invert];
-    str = [str stringByAddingPercentEncodingWithAllowedCharacters:muSet];
-    NSURL *url = [NSURL URLWithString:str];
+//    NSMutableCharacterSet *muSet = [NSMutableCharacterSet characterSetWithCharactersInString:@"# |\"`%^{}\\<>"];
+//    [muSet invert];
+//    str = [str stringByAddingPercentEncodingWithAllowedCharacters:muSet];
+//    NSURL *url = [NSURL URLWithString:str];
+    NSURL *url = [ZCURLEncode generateUrl:str];
     NSLog(@"url = %@",[url absoluteString]);
+    NSString *decodeStr = [ZCURLEncode decodeURL:url];
+    NSLog(@"decodeStr = %@",decodeStr);
+    
 }
 
 

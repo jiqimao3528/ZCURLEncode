@@ -23,4 +23,16 @@
     }
 }
 
++ (NSString *)decodeURL:(NSURL *)encodeURL {
+    
+    if (encodeURL && [encodeURL isKindOfClass:[NSURL class]] && encodeURL.absoluteString && [encodeURL.absoluteString isKindOfClass:[NSString class]]) {
+        
+        return [encodeURL.absoluteString stringByRemovingPercentEncoding];
+    }else {
+        
+        NSLog(@"encodeURL非法");
+        return nil;
+    }
+}
+
 @end

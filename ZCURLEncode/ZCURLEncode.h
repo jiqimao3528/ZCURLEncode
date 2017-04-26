@@ -20,4 +20,11 @@
  */
 + (NSURL *)generateUrl:(NSString *)oriStr;
 
+/*!
+ @method
+ @abstract   解码url
+ @param      encodeURL 编码的URL
+ */
++ (NSString *)decodeURL:(NSURL *)encodeURL;
+
 @end
